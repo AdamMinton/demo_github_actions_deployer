@@ -1,6 +1,6 @@
 {
     "original_value_of_variable":{
         "saleseng":"prod_value_of_variable",
-        "name_of_upstream_environemtn":"new_desired_value"
+        "name_of_upstream_branch":"new_desired_value"
     }
 }
