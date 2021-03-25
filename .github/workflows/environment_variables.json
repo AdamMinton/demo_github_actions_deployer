@@ -1,6 +1,6 @@
 {
-    "us-atldm-test-dev-9198":{
-        "randstadstaging":"us-atldm-test-qa-2114",
-        "randstad1":"us-atldm-test-prd-99b5"
+    "original_value_of_variable":{
+        "saleseng":"prod_value_of_variable",
+        "name_of_upstream_environemtn":"new_desired_value"
     }
 }
