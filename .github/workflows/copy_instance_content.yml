@@ -11,7 +11,7 @@ jobs:
       matrix:
         python-version: [3.8]
         ruby-version: [2.6]
-        dev-environment: [randstaddev]
+        dev-environment: [profservices]
 
     steps:
     - name: Checkout the branch requesting the pull request
