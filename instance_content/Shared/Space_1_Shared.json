@@ -1,0 +1,27 @@
+{
+  "name": "Shared",
+  "parent_id": null,
+  "id": 1,
+  "content_metadata_id": 1,
+  "created_at": "2017-10-26 21:37:22 +0000",
+  "creator_id": null,
+  "child_count": 35,
+  "external_id": null,
+  "is_embed": false,
+  "is_embed_shared_root": false,
+  "is_embed_users_root": false,
+  "is_personal": false,
+  "is_personal_descendant": false,
+  "is_shared_root": true,
+  "is_users_root": false,
+  "can": {
+    "index": true,
+    "show": true,
+    "create": true,
+    "see_admin_spaces": true,
+    "update": false,
+    "destroy": false,
+    "move_content": true,
+    "edit_content": true
+  }
+}
