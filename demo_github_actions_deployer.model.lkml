@@ -3,6 +3,7 @@ connection: "thelook_events_redshift"
 include: "/views/*.view.lkml"
 
 #test
+#try again after port fix
 
 explore: order_items {
 
