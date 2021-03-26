@@ -78,7 +78,6 @@ jobs:
     - name: Commit refreshed environment branch
       run: |
         git add -A 
-        git rm --cached looker.ini
         git commit -m "Updating ${{ github.event.inputs.instance }} with latest commits"
         git push --set-upstream origin ${{ github.event.inputs.instance }} --force
   
