@@ -63,6 +63,6 @@ jobs:
       run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
-        git add -A 
-        git commit -m "Updating repo with content changes detected"
-        git push 
+        git add -A  || echo "ignore commit failure, proceed"
+        git commit -m "Updating repo with content changes detected"  || echo "ignore commit failure, proceed"
+        git push  || echo "ignore commit failure, proceed"
