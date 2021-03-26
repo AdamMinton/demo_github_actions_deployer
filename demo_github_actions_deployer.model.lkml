@@ -2,6 +2,10 @@ connection: "thelook_events_redshift"
 
 include: "/views/*.view.lkml"
 
+#test
+#try again after port fix
+#added test instnace content folder
+#I fixed gitignore and didn't fix the corresponding code
 
 explore: order_items {
 
