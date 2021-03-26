@@ -2,6 +2,7 @@ connection: "thelook_events_redshift"
 
 include: "/views/*.view.lkml"
 
+#test
 
 explore: order_items {
 
