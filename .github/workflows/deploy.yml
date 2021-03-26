@@ -4,7 +4,7 @@ on:
   workflow_dispatch: 
     inputs:
       instance:
-        description: 'Select Instance to Deploy To: randstaddev or randstadstaging'
+        description: 'Select Instance to Deploy To: saleseng'
         
         required: true
       commit:
@@ -48,16 +48,16 @@ jobs:
     - name: Create Looker ini File
       run: |
           cat << EOF > looker.ini
-          [randstaddev]
-          base_url=https://randstaddev.looker.com:443
-          client_id=${{ secrets.RANDSTADDEV_CLIENT_ID }}
-          client_secret=${{ secrets.RANDSTADDEV_SECRET }}
+          [profservices]
+          base_url=https://profservices.dev.looker.com:443
+          client_id=${{ secrets.PROFSERVICES_CLIENT_ID }}
+          client_secret=${{ secrets.PROFSERVICES_SECRET }}
           verify_ssl=True 
           
-          [randstadstaging]
-          base_url=https://randstadstaging.looker.com:443
-          client_id=${{ secrets.RANDSTADSTAGING_CLIENT_ID }}
-          client_secret=${{ secrets.RANDSTADSTAGING_SECRET }}
+          [saleseng]
+          base_url=https://saleseng.dev.looker.com:443
+          client_id=${{ secrets.SALESENG_CLIENT_ID }}
+          client_secret=${{ secrets.SALESENG_SECRET }}
           verify_ssl=True 
           EOF
     

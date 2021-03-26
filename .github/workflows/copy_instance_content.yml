@@ -11,7 +11,7 @@ jobs:
       matrix:
         python-version: [3.8]
         ruby-version: [2.6]
-        dev-environment: [randstaddev]
+        dev-environment: [profservices]
 
     steps:
     - name: Checkout the branch requesting the pull request
@@ -37,16 +37,16 @@ jobs:
     - name: Create Looker ini File
       run: |
           cat << EOF > looker.ini
-          [randstaddev]
-          base_url=https://randstaddev.looker.com:443
-          client_id=${{ secrets.RANDSTADDEV_CLIENT_ID }}
-          client_secret=${{ secrets.RANDSTADDEV_SECRET }}
+          [profservices]
+          base_url=https://profservices.dev.looker.com:443
+          client_id=${{ secrets.PROFSERVICES_CLIENT_ID }}
+          client_secret=${{ secrets.PROFSERVICES_SECRET }}
           verify_ssl=True 
           
-          [randstadstaging]
-          base_url=https://randstadstaging.looker.com:443
-          client_id=${{ secrets.RANDSTADSTAGING_CLIENT_ID }}
-          client_secret=${{ secrets.RANDSTADSTAGING_SECRET }}
+          [saleseng]
+          base_url=https://saleseng.dev.looker.com:443
+          client_id=${{ secrets.SALESENG_CLIENT_ID }}
+          client_secret=${{ secrets.SALESENG_SECRET }}
           verify_ssl=True 
           EOF
     - name: Export content to instance_content_new
