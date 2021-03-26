@@ -89,6 +89,10 @@ jobs:
       run: |
         python ./.github/workflows/deploy_delete_content.py ./ ${{ github.event.inputs.commit }} ${{ github.event.inputs.instance }}
     
+    - name: Add spaces in file and directory names from exported content
+      run: |
+        find -wholename "./instance_content/*_*" -print0 | sort -rz | while read -d $'\0' f; do mv -v "$f" "$(dirname "$f")/$(basename "${f//_/ }")"; done
+    
     - name: Deploy content to instance
       run: |
         ldeploy content import --env ${{ github.event.inputs.instance }} --ini looker.ini --folders ./instance_content/Shared --recursive

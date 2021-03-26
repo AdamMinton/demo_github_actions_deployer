@@ -32,7 +32,7 @@ destination_commit_arg = str(sys.argv[2]) #'60b1292a6832da6a3b0d6fae7752d4bd4c82
 section = str(sys.argv[3]) #'randstadstaging'
 
 #Defaults
-project = 'demo_randstad'
+project = 'demo_github_actions_deployer'
 ini_file = 'looker.ini'
 #ini_file = '/usr/local/google/home/adamminton/Documents/credentials/looker.ini'
 path_modifier = "./"
