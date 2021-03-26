@@ -38,13 +38,13 @@ jobs:
       run: |
           cat << EOF > looker.ini
           [profservices]
-          base_url=https://profservices.dev.looker.com:443
+          base_url=https://profservices.dev.looker.com:19999
           client_id=${{ secrets.PROFSERVICES_CLIENT_ID }}
           client_secret=${{ secrets.PROFSERVICES_SECRET }}
           verify_ssl=True 
           
           [saleseng]
-          base_url=https://saleseng.dev.looker.com:443
+          base_url=https://saleseng.dev.looker.com:19999
           client_id=${{ secrets.SALESENG_CLIENT_ID }}
           client_secret=${{ secrets.SALESENG_SECRET }}
           verify_ssl=True 
