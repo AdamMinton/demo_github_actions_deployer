@@ -64,6 +64,5 @@ jobs:
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add -A 
-        git rm --cached looker.ini
         git commit -m "Updating repo with content changes detected"
         git push 
