@@ -4,6 +4,7 @@ include: "/views/*.view.lkml"
 
 #test
 #try again after port fix
+#added test instnace content folder
 
 explore: order_items {
 
