@@ -7,6 +7,7 @@ include: "/views/*.view.lkml"
 #added test instnace content folder
 #I fixed gitignore and didn't fix the corresponding code
 #another fix
+#moved to another folder
 
 explore: order_items {
 
