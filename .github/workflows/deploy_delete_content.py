@@ -67,7 +67,7 @@ repo.git.checkout(section)
 branch = repo.head.reference
 source_commit_arg = branch.commit.hexsha
 repo.git.checkout('master')
-source_commit = repo.commit(destination_commit_arg)
+source_commit = repo.commit(source_commit_arg)
 destination_commit = repo.commit(destination_commit_arg)
 
 #Source Commit (A) is compared to Destination Commit (B).
