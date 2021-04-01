@@ -14,11 +14,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      project: demo_github_actions_deployer
     strategy:
       matrix:
         python-version: [3.8]
         ruby-version: [2.6]
-        project: [demo_github_actions_deployer]
 
     steps:
     - name: Checkout the master branch
@@ -85,11 +86,11 @@ jobs:
   
     - name: Deploy looker code to instance
       run: |
-        python ./.github/workflows/deploy_lookml_code.py ${{ github.event.inputs.instance }} ${{ maxtrix.project }}
+        python ./.github/workflows/deploy_lookml_code.py ${{ github.event.inputs.instance }} ${{ env.project }}
 
     - name: Delete old content
       run: |
-        python ./.github/workflows/deploy_delete_content.py ./ ${{ github.event.inputs.commit }} ${{ github.event.inputs.instance }} ${{ maxtrix.project }}
+        python ./.github/workflows/deploy_delete_content.py ./ ${{ github.event.inputs.commit }} ${{ github.event.inputs.instance }} ${{ env.project }}
     
     - name: Add spaces in file and directory names from exported content
       run: |
