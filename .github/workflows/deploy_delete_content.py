@@ -37,7 +37,7 @@ ini_file = 'looker.ini'
 #ini_file = '/usr/local/google/home/adamminton/Documents/credentials/looker.ini'
 path_modifier = "./"
 #path_modifier = "/usr/local/google/home/adamminton/Documents/python_scripts/file_management/backup/"
-
+ini_file = path_modifier + repo_directory_arg + ini_file #this will need to be deleted
 #Read ini file 
 config = configparser.ConfigParser()
 config.read(ini_file)
