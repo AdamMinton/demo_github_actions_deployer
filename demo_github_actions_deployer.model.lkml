@@ -4,6 +4,7 @@ include: "/views/*.view.lkml"
 
 #Moved Dashboard into a folder
 #Moved dashbaord back to root folder, deleted folder
+#moved dashboard back to new folder
 
 explore: order_items {
 
