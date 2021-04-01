@@ -7,12 +7,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      project: demo_github_actions_deployer
+      dev-environment: profservices
     strategy:
       matrix:
         python-version: [3.8]
         ruby-version: [2.6]
-        dev-environment: [profservices]
-        project: [demo_github_actions_deployer]
 
     steps:
     - name: Checkout the branch requesting the pull request
@@ -52,7 +53,7 @@ jobs:
           EOF
     - name: Export content to instance_content_new
       run: |
-        ldeploy content export --folders 1 --env ${{ matrix.dev-environment }} --ini looker.ini --local-target ./instance_content_new
+        ldeploy content export --folders 1 --env ${{ env.dev-environment }} --ini looker.ini --local-target ./instance_content_new
     - name: Remove spaces in file and directory names from exported content new
       run: |
         find -name "* *" -print0 | sort -rz | while read -d $'\0' f; do mv -v "$f" "$(dirname "$f")/$(basename "${f// /_}")"; done
