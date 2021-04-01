@@ -30,9 +30,9 @@ import sys
 repo_directory_arg = str(sys.argv[1]) #"/usr/local/google/home/adamminton/Documents/git_repos/demo_randstad"
 destination_commit_arg = str(sys.argv[2]) #'60b1292a6832da6a3b0d6fae7752d4bd4c82d0cd'
 section = str(sys.argv[3]) #'randstadstaging'
+project = str(sys.argv[4]) #demo_github_actions_deployer
 
 #Defaults
-project = 'demo_github_actions_deployer'
 ini_file = 'looker.ini'
 #ini_file = '/usr/local/google/home/adamminton/Documents/credentials/looker.ini'
 path_modifier = "./"

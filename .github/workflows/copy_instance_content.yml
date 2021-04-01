@@ -12,6 +12,7 @@ jobs:
         python-version: [3.8]
         ruby-version: [2.6]
         dev-environment: [profservices]
+        project: [demo_github_actions_deployer]
 
     steps:
     - name: Checkout the branch requesting the pull request
