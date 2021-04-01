@@ -71,6 +71,7 @@ jobs:
         git switch master
         git branch -D ${{ github.event.inputs.instance }}
         git checkout -b ${{ github.event.inputs.instance }} ${{ github.event.inputs.commit }}
+        git checkout master -- .github/workflows/
     
     - name: Update environment variables
       run: |
