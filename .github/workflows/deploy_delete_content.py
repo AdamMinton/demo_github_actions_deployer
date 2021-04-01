@@ -27,17 +27,14 @@ import json
 import sys
 
 #Args from starting python script
-repo_directory_arg = str(sys.argv[1]) #"/usr/local/google/home/adamminton/Documents/git_repos/demo_randstad"
-destination_commit_arg = str(sys.argv[2]) #'60b1292a6832da6a3b0d6fae7752d4bd4c82d0cd'
-section = str(sys.argv[3]) #'randstadstaging'
+repo_directory_arg = str(sys.argv[1]) #./
+destination_commit_arg = str(sys.argv[2]) #60b1292a6832da6a3b0d6fae7752d4bd4c82d0cd
+section = str(sys.argv[3]) #saleseng
 project = str(sys.argv[4]) #demo_github_actions_deployer
 
 #Defaults
-ini_file = 'looker.ini'
-#ini_file = '/usr/local/google/home/adamminton/Documents/credentials/looker.ini'
-path_modifier = "./"
-#path_modifier = "/usr/local/google/home/adamminton/Documents/python_scripts/file_management/backup/"
-ini_file = path_modifier + repo_directory_arg + ini_file #this will need to be deleted
+ini_file = repo_directory_arg + 'looker.ini'
+
 #Read ini file 
 config = configparser.ConfigParser()
 config.read(ini_file)
@@ -87,11 +84,11 @@ for diff_item in diff:
 
                 #Retrieve instance being deployed to with IDs for content to be deleted                
                 if looker_object =='dashboard':
-                    dashboard_slug = retrieve_dashboard_slug(path_modifier+diff_item.a_path)
+                    dashboard_slug = retrieve_dashboard_slug(repo_directory_arg+diff_item.a_path)
                     dashboard = sdk.search_dashboards(slug=dashboard_slug)
                     looker_id = dashboard[0].id
                 elif looker_object == 'look':
-                    look_title = retrieve_look_title(path_modifier+diff_item.a_path)
+                    look_title = retrieve_look_title(repo_directory_arg+diff_item.a_path)
                     look = sdk.search_looks(title=look_title)
                     looker_id = look[0].id
                 else: looker_id = 0
