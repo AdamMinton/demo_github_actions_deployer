@@ -96,14 +96,14 @@ for diff_item in diff:
                     try:
                         looker_id = dashboard[0].id
                     except:
-                        next
+                        continue
                 elif looker_object == 'look':
                     look_title = retrieve_look_title(repo_directory_arg+diff_item.a_path)
                     look = sdk.search_looks(title=look_title)
                     try:
                         looker_id = look[0].id
                     except:
-                        next
+                        continue
                 else: looker_id = 0
                 
                 output_to_log("Deleting " + diff_item.a_path)
