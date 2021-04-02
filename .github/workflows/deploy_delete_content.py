@@ -84,7 +84,7 @@ output_to_log("Destination Commit is " + destination_commit_arg)
 
 #Source Commit (A) is compared to Destination Commit (B).
 diff = source_commit.diff(destination_commit)
-
+repo.git.checkout(section)
 list_files(repo_directory_arg)
 
 for diff_item in diff:
