@@ -2,6 +2,15 @@ def output_to_log(message):
     default = 'echo \"\u001b[31m' + message + '\"'
     os.system(default)
 
+def list_files(startpath):
+    for root, dirs, files in os.walk(startpath):
+        level = root.replace(startpath, '').count(os.sep)
+        indent = ' ' * 4 * (level)
+        output_to_log('{}{}/'.format(indent, os.path.basename(root)))
+        subindent = ' ' * 4 * (level + 1)
+        for f in files:
+            output_to_log('{}{}'.format(subindent, f))
+
 def determine_file_looker_object(file_name):
     first_file_part = file_name.split("_")[0]
     if first_file_part == 'Dashboard':
@@ -75,6 +84,8 @@ output_to_log("Destination Commit is " + destination_commit_arg)
 
 #Source Commit (A) is compared to Destination Commit (B).
 diff = source_commit.diff(destination_commit)
+
+list_files(repo_directory_arg)
 
 for diff_item in diff:
     diff_item_path = diff_item.a_path.split("/") 
