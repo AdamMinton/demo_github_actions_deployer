@@ -26,6 +26,7 @@ jobs:
       with:
         ref: master
         fetch-depth: 0
+  
     - name: Set up Ruby ${{ matrix.ruby-version }}
       uses: ruby/setup-ruby@v1
       with:
@@ -61,8 +62,12 @@ jobs:
           client_secret=${{ secrets.SALESENG_SECRET }}
           verify_ssl=True 
           EOF
-    
-    - name: Obtain lookml content code
+  
+    - name: Delete old content
+      run: |
+        python ./.github/workflows/deploy_delete_content.py ./ ${{ github.event.inputs.commit }} ${{ github.event.inputs.instance }} ${{ env.project }}
+
+    - name: Obtain new lookml content code
       run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
@@ -86,10 +91,6 @@ jobs:
     - name: Deploy looker code to instance
       run: |
         python ./.github/workflows/deploy_lookml_code.py ${{ github.event.inputs.instance }} ${{ env.project }}
-
-    - name: Delete old content
-      run: |
-        python ./.github/workflows/deploy_delete_content.py ./ ${{ github.event.inputs.commit }} ${{ github.event.inputs.instance }} ${{ env.project }}
     
     - name: Add spaces in file and directory names from exported content
       run: |
