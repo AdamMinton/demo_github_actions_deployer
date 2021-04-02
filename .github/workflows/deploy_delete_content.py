@@ -1,3 +1,7 @@
+def output_to_log(message):
+    default = 'echo \"\u001b[31m' + message + '\"'
+    os.system(default)
+
 def determine_file_looker_object(file_name):
     first_file_part = file_name.split("_")[0]
     if first_file_part == 'Dashboard':
@@ -65,14 +69,16 @@ branch = repo.head.reference
 source_commit_arg = branch.commit.hexsha
 repo.git.checkout('master')
 source_commit = repo.commit(source_commit_arg)
+output_to_log("Source Arg is " + source_commit_arg)
 destination_commit = repo.commit(destination_commit_arg)
+output_to_log("Destination Commit is " + destination_commit_arg)
 
 #Source Commit (A) is compared to Destination Commit (B).
 diff = source_commit.diff(destination_commit)
 
 for diff_item in diff:
     diff_item_path = diff_item.a_path.split("/") 
-    print(diff_item_path)
+    output_to_log("Diff item is " + diff_item_path)
     if diff_item_path[0] == 'instance_content':
         #Only look at differences inside of the instance content
         #Process deletes first to prep instance for full import
