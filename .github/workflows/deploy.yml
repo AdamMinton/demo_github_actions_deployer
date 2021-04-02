@@ -65,7 +65,7 @@ jobs:
   
     - name: Get latest workflow files
       run: |
-        git branch -a
+        git fetch master
         git checkout master -- .github/workflows/
     
     - name: Delete old content
