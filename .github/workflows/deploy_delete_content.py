@@ -69,7 +69,7 @@ branch = repo.head.reference
 source_commit_arg = branch.commit.hexsha
 repo.git.checkout('master')
 source_commit = repo.commit(source_commit_arg)
-output_to_log("Source Arg is " + source_commit_arg)
+output_to_log("Current Commit is " + source_commit_arg)
 destination_commit = repo.commit(destination_commit_arg)
 output_to_log("Destination Commit is " + destination_commit_arg)
 
@@ -78,7 +78,7 @@ diff = source_commit.diff(destination_commit)
 
 for diff_item in diff:
     diff_item_path = diff_item.a_path.split("/") 
-    output_to_log("Diff item is " + diff_item_path)
+    output_to_log("Diff item is " + diff_item.a_path)
     if diff_item_path[0] == 'instance_content':
         #Only look at differences inside of the instance content
         #Process deletes first to prep instance for full import
@@ -100,6 +100,6 @@ for diff_item in diff:
                     looker_id = look[0].id
                 else: looker_id = 0
                 
-                print("Deleting: " + diff_item.a_path)
+                output_to_log("Deleting " + diff_item.a_path)
                 gzr_command = "gzr " + looker_object + " " + operation + " " + looker_id + " --host=" + host + " --client-id=" + client_id + " --client-secret=" + client_secret + " --port=" + port
                 os.system(gzr_command)
