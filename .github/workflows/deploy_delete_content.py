@@ -72,6 +72,7 @@ diff = source_commit.diff(destination_commit)
 
 for diff_item in diff:
     diff_item_path = diff_item.a_path.split("/") 
+    print(diff_item_path)
     if diff_item_path[0] == 'instance_content':
         #Only look at differences inside of the instance content
         #Process deletes first to prep instance for full import
