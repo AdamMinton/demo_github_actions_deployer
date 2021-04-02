@@ -63,6 +63,10 @@ jobs:
           verify_ssl=True 
           EOF
   
+    - name: Get latest workflow files
+      run: |
+        git checkout master -- .github/workflows/
+    
     - name: Delete old content
       run: |
         python ./.github/workflows/deploy_delete_content.py ./ ${{ github.event.inputs.commit }} ${{ github.event.inputs.instance }} ${{ env.project }}
