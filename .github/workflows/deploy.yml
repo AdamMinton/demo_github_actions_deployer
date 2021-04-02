@@ -21,10 +21,10 @@ jobs:
         ruby-version: [2.6]
 
     steps:
-    - name: Checkout the instance branch
+    - name: Checkout the master branch
       uses: actions/checkout@v2
       with:
-        ref: ${{ github.event.inputs.instance }}
+        ref: master
         fetch-depth: 0
   
     - name: Set up Ruby ${{ matrix.ruby-version }}
@@ -65,7 +65,10 @@ jobs:
   
     - name: Get latest workflow files
       run: |
-        git fetch master
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git branch -a
+        git switch ${{ github.event.inputs.instance }} 
         git checkout master -- .github/workflows/
     
     - name: Delete old content
@@ -74,8 +77,6 @@ jobs:
 
     - name: Obtain new lookml content code
       run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
         git switch master
         git branch -D ${{ github.event.inputs.instance }}
         git checkout -b ${{ github.event.inputs.instance }} ${{ github.event.inputs.commit }}
