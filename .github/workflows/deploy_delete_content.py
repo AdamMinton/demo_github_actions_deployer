@@ -93,11 +93,17 @@ for diff_item in diff:
                 if looker_object =='dashboard':
                     dashboard_slug = retrieve_dashboard_slug(repo_directory_arg+diff_item.a_path)
                     dashboard = sdk.search_dashboards(slug=dashboard_slug)
-                    looker_id = dashboard[0].id
+                    try:
+                        looker_id = dashboard[0].id
+                    except:
+                        next
                 elif looker_object == 'look':
                     look_title = retrieve_look_title(repo_directory_arg+diff_item.a_path)
                     look = sdk.search_looks(title=look_title)
-                    looker_id = look[0].id
+                    try:
+                        looker_id = look[0].id
+                    except:
+                        next
                 else: looker_id = 0
                 
                 output_to_log("Deleting " + diff_item.a_path)
