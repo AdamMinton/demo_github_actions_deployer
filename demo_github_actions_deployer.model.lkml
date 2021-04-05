@@ -8,6 +8,7 @@ include: "/views/*.view.lkml"
 #moved dashboard back to root folder, copied in same folder
 #moved dashboard back to folder
 #moved dashboard back to root
+#Copied new dashboard
 
 explore: order_items {
 
