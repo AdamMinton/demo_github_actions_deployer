@@ -9,6 +9,8 @@ include: "/views/*.view.lkml"
 #moved dashboard back to folder
 #moved dashboard back to root
 #Copied new dashboard
+#lookml updaates
+
 
 explore: order_items {
 
