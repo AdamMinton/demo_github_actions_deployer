@@ -56,7 +56,7 @@ jobs:
         ldeploy content export --folders 1 --env ${{ env.dev-environment }} --ini looker.ini --local-target ./instance_content_new
     - name: Remove spaces in file and directory names from exported content new
       run: |
-        find -name "* *" -print0 | sort -rz | while read -d $'\0' f; do mv -v "$f" "$(dirname "$f")/$(basename "${f// /_}")"; done
+        find -name "* *" sort -rz | while read -d $'\0' f; do mv -v "$f" "$(dirname "$f")/$(basename "${f// /_}")"; done
     - name: Remove non-related content files to this project
       run: |
         python ./.github/workflows/copy_instance_content_remove_non_related_content.py ./ ./instance_content_new
