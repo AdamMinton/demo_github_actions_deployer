@@ -85,11 +85,10 @@ output_to_log("Destination Commit is " + destination_commit_arg)
 #Source Commit (A) is compared to Destination Commit (B).
 diff = source_commit.diff(destination_commit)
 repo.git.checkout(section)
-list_files(repo_directory_arg)
+#list_files(repo_directory_arg) -- use for debugging if unsure what files are being compared
 
 for diff_item in diff:
     diff_item_path = diff_item.a_path.split("/") 
-    output_to_log("Diff item is " + diff_item.a_path)
     if diff_item_path[0] == 'instance_content':
         #Only look at differences inside of the instance content
         #Process deletes first to prep instance for full import
