@@ -7,7 +7,7 @@
   "readonly": false,
   "refresh_interval": null,
   "refresh_interval_to_i": null,
-  "title": "Demo Github Actions Deployer (copy 2)",
+  "title": "Demo Github Actions Deployer (copy 2) - renamed me",
   "user_id": 299,
   "space": {
     "name": "Demo Folder",
@@ -362,7 +362,7 @@
       "column_width": null,
       "width": null,
       "deleted": false,
-      "dashboard_title": "Demo Github Actions Deployer (copy 2)",
+      "dashboard_title": "Demo Github Actions Deployer (copy 2) - renamed me",
       "dashboard_layout_components": [
         {
           "id": 4015,
