@@ -2,6 +2,7 @@ name: Deploy
 
 on:
   workflow_dispatch: 
+    #These inputs will guide the deploy workflow to determine where LookML and Content needs to be deployed to from this git repo
     inputs:
       instance:
         description: 'Select Instance to Deploy To: saleseng'
@@ -64,6 +65,7 @@ jobs:
           EOF
   
     - name: Get latest workflow files
+      #This step ensures the latest workflow files are available even if workflow files are updated after the code was previously deployed
       run: |
         git config user.name github-actions
         git config user.email github-actions@github.com
@@ -72,10 +74,12 @@ jobs:
         git checkout master -- ./.github/workflows/
     
     - name: Delete old content
+      #Based on git diff this will attempt to delete dashboards and looks in upstream environment
       run: |
         python ./.github/workflows/deploy_delete_content.py ./ ${{ github.event.inputs.commit }} ${{ github.event.inputs.instance }} ${{ env.project }}
 
     - name: Obtain new lookml content code
+      #This will delete old environment branch and create it from the commit specified
       run: |
         git switch master
         git branch -D ${{ github.event.inputs.instance }}
@@ -83,6 +87,7 @@ jobs:
         git checkout master -- .github/workflows/
     
     - name: Update environment variables
+      #This will update lkml files for variables that are specific in each environment
       run: |
         python ./.github/workflows/find_and_replace.py ${{ github.event.inputs.instance }}
   
@@ -93,10 +98,12 @@ jobs:
         git push --set-upstream origin ${{ github.event.inputs.instance }} --force || echo "ignore commit failure, proceed"
   
     - name: Deploy looker code to instance
+      #This runs advanced deploy in the specified environment
       run: |
         python ./.github/workflows/deploy_lookml_code.py ${{ github.event.inputs.instance }} ${{ env.project }}
     
     - name: Add spaces in file and directory names from exported content
+      #Ldeploy deploys content based on the local directories folder names so need to add in spaces for underscores
       run: |
         find -wholename "./instance_content/*_*" -print0 | sort -rz | while read -d $'\0' f; do mv -v "$f" "$(dirname "$f")/$(basename "${f//_/ }")"; done
     
