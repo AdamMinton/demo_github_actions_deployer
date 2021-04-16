@@ -10,6 +10,7 @@ include: "/views/*.view.lkml"
 #moved dashboard back to root
 #Copied new dashboard
 #lookml updaates
+# added new dashboard
 
 
 explore: order_items {
