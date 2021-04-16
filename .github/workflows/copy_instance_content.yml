@@ -61,10 +61,6 @@ jobs:
       run: |
         python ./.github/workflows/copy_instance_content_remove_non_related_content.py ./ ./instance_content_new
     - name: Commit files
-      continue-on-error: true
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add -A  || echo "ignore commit failure, proceed"
-        git commit -m "Updating repo with content changes detected"  || echo "ignore commit failure, proceed"
-        git push  || echo "ignore commit failure, proceed"
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Updating repo with content changes detected
