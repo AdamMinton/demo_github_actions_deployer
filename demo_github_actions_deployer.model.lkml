@@ -13,6 +13,7 @@ include: "/views/*.view.lkml"
 # added new dashboard
 #just lookml changes
 #jsut a small change
+#renamed a dashboard
 
 
 explore: order_items {
